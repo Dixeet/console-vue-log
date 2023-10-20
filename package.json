@@ -1,12 +1,20 @@
 {
-  "name": "@rodrive/console-vue-log",
+  "name": "@rodrive/console-vlog",
   "private": false,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "files": ["dist"],
+  "main": "./dist/console-vlog.js",
+  "exports": {
+    ".": {
+      "import": "./dist/console-vlog.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "vue": "^3.3.4"
@@ -22,7 +30,7 @@
     "eslint-plugin-vue": "^9.17.0",
     "prettier": "^3.0.3"
   },
-  "description": "This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.",
-  "author": "",
-  "license": "ISC"
+  "description": "Console Vue Log is a vue plugin. console.vlog() will print the value of a ref/reactive/standard variable and watch for changes",
+  "author": "Robin",
+  "license": "MIT"
 }

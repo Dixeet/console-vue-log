@@ -1,7 +1,49 @@
-# Vue 3 + Vite
+# Console Vue Log
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+_A console.log for vue_
 
-## Recommended IDE Setup
+### Install
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+```shell
+npm install @rodrive/console-vlog
+```
+
+### Usage
+
+`file: src/main.js`
+
+```js
+import { createApp } from 'vue';
+import App from './App.vue';
+import consoleVlog from '@rodrive/console-vlog';
+
+createApp(App).use(consoleVlog, {
+  override: false,  // override console.log() [default: false]
+}).mount('#app');
+```
+
+`file: components/foobar.vue`
+
+```js
+const foobar = ref('foo');
+const reactiveObj = reactive({ bool: false });
+
+console.vlog(foobar);
+console.vlog(reactiveObj);
+
+foobar.value = 'bar';
+reactiveObj.bool = true;
+```
+
+### Console
+
+```shell
+Ref(0): http://localhost:5173/src/App.vue:13:9
+   foo
+Proxy(0): http://localhost:5173/src/App.vue:14:9
+   {bool: false}
+Ref(1): http://localhost:5173/src/App.vue:13:9
+   bar
+Proxy(1): http://localhost:5173/src/App.vue:14:9
+   {bool: true}
+```
