@@ -1,5 +1,16 @@
 <script setup>
+/* eslint-disable no-console */
 import HelloWorld from './components/HelloWorld.vue';
+import { reactive, ref } from 'vue';
+
+const foobar = ref('foo');
+const reactiveObj = reactive({ bool: false });
+
+console.vlog(foobar);
+console.vlog(reactiveObj);
+
+foobar.value = 'bar';
+reactiveObj.bool = true;
 </script>
 
 <template>
